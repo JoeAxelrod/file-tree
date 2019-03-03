@@ -1,0 +1,19 @@
+<div *ngFor="let item of content.childrens">
+  <div [ngSwitch]="item.fileTypeId">
+    <div *ngSwitchCase="'1'">
+      <div class="folder-header" (contextmenu)="createItem(item)">
+        <div *ngIf="!item.isEditMode">
+          <img class="folder-icon" (click)="toggleFolder(item)" [src]="item.isOpen ? 'assets/images/folder-open-icon.svg' : 'assets/images/folder-icon.svg'" alt="folder">
+          <span (dblclick)="editFolder(item)">{{item.name}}</span>
+        </div>
+        <div *ngIf="item.isEditMode">
+          <input type="text" [(ngModel)]="item.name" (keydown.enter)="editFolder(item)" (blur)="editFolder(item)">
+        </div>
+      </div>
+      <app-folder [@slideToggle]="item.isOpen ? 'open' : 'close'" [content]="item"></app-folder>
+    </div>
+    <div *ngSwitchCase="'2'">
+      <app-file [content]="item"></app-file>
+    </div>
+  </div>
+</div>

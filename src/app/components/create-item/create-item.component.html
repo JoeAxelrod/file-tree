@@ -1,0 +1,13 @@
+<div class="file-type">File Type</div>
+<div class="file-type-options">
+  <h1>Create Item</h1>
+  <input type="radio" [value]="1" [(ngModel)]="file.fileTypeId">
+  <img src="/assets/images/folder-icon.svg" alt="folder">
+  Folder
+  <input type="radio" [value]="2" [(ngModel)]="file.fileTypeId">
+  <img src="/assets/images/file-icon.svg" alt="file">
+  File
+  <div class="name">Name:</div>
+  <input type="text" [(ngModel)]="file.name">
+  <button (click)="createFile()">Create</button>
+</div>
